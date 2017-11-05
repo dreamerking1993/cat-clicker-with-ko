@@ -7,7 +7,7 @@
 <body>
     <ul id="cat-list" data-bind="foreach: catList">
         <li>
-            <span data-bind="text: name"></span>
+            <button data-bind="text: name, click: $parent.changeCurrentCat"></button>
         </li>    
     </ul>
         

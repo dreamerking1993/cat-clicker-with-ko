@@ -36,6 +36,7 @@
             nicknames: ["alxi","nindralu","loddar"]
         }
     ]
+    
 
 var Cat = function(data) {
 	this.clickCount = ko.observable(data.clickCount); 
@@ -75,31 +76,18 @@ var ViewModel = function() {
 		self.catList.push(new Cat(catItem));
 		//debugger
 	});
-	this.currentCat = ko.observable(this.catList()[0]);
-/*
-	this.currentCat = ko.observable( new Cat({
-		clickCount: 0,
-		name: 'Tabby',
-		imgSrc: 'img/434164568_fea0ad4013_z.jpg',
-		imgAttribution: 'https:/www.flickr.com/photos/bigtallguy/434164568',
-		nicknames: ["kaley","valey","kuhura-chor"]
-	}) );
-*/	
+	this.currentCat = ko.observable(this.catList()[1]);
 
 	this.incrementCounter = function() {
 		this.clickCount(this.clickCount() + 1);//since incrementCounter in in the currentCat binding context in html, this refers to currentCat()
 	};
 
-	//OR TRY FOLLOWING METHOD
-	/*
-	self = this;
-	self.currentCat = ko.observable( new Cat() );
-
-	this.incrementCounter = function() {
-		self.currentCat().clickCount(self.currentCat().clickCount() + 1);
+	this.changeCurrentCat = function(clickedCat) {
+		//debugger
+		//self.currentCat = ko.observable(clickedCat); //this dosen't work
+		self.currentCat(clickedCat);
 	};
-	*/	
-
+	
 }
 
 
